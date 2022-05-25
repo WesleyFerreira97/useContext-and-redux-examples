@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { useSectionsContext } from '../../contexts/SectionsContext';
 import { MainContentWrap } from './style'
 
 export function MainContent() {
+    const { contextState } = useSectionsContext();
+
     return (
-        <MainContentWrap>
+        <MainContentWrap bg={contextState.bg}>
             <header className='header'>
                 <h1 className='title'>Main Content</h1>
-                <h2>Style 1</h2>
+                <h2>{contextState.text}</h2>
             </header>
         </MainContentWrap>
     )
