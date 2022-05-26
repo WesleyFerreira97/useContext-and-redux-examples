@@ -3,6 +3,7 @@ import { MainContent } from '../components/MainContent'
 import { Sidebar } from '../components/Sidebar'
 import styled from 'styled-components'
 import { SectionsStyleProvider } from '../contexts/SectionsContext';
+import { SectionsStylesProvider } from '../contexts/SectionsStyles';
 
 const StyledHome = styled.div`
     display: flex;
@@ -11,11 +12,13 @@ const StyledHome = styled.div`
 
 export function Home() {
     return (
-        <SectionsStyleProvider>
-            <StyledHome>
-                <Sidebar />
-                <MainContent />
-            </StyledHome>
-        </SectionsStyleProvider>
+        <SectionsStylesProvider>
+            <SectionsStyleProvider>
+                <StyledHome>
+                    <Sidebar />
+                    <MainContent />
+                </StyledHome>
+            </SectionsStyleProvider>
+        </SectionsStylesProvider>
     )
 }
