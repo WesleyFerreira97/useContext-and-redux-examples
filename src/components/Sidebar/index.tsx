@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { useSectionsContext } from '../../contexts/SectionsContext'
+import { ValueTypes, useSectionsContext } from '../../contexts/SectionsStyles';
 import { ButtonSidebar } from '../ButtonSidebar'
 import { SidebarWrap } from './style'
 
-const SectionsStyles = {
+const sectionsStyles = {
     section1: {
         bg: '#FF2E63',
         text: 'Section 1'
@@ -19,21 +19,25 @@ const SectionsStyles = {
 }
 
 export function Sidebar() {
-    const { setContextState } = useSectionsContext();
+    const { setValues } = useSectionsContext();
 
-    useEffect(() => {
-
-        setContextState({
-            bg: 'black',
-            text: 'fuck'
-        });
-    }, [])
+    function handleChangeSection(values: ValueTypes) {
+        setValues(values);
+    }
 
     return (
         <SidebarWrap>
-            <ButtonSidebar> Style 1 </ButtonSidebar>
-            <ButtonSidebar> Style 2 </ButtonSidebar>
+            <ButtonSidebar
+                onClick={() => handleChangeSection(sectionsStyles.section1)}> Style 1
+            </ButtonSidebar>
+            <ButtonSidebar
+                onClick={() => handleChangeSection(sectionsStyles.section2)}> Style 2
+            </ButtonSidebar>
+            <ButtonSidebar
+                onClick={() => handleChangeSection(sectionsStyles.section3)}> Style 3
+            </ButtonSidebar>
         </SidebarWrap>
     )
 }
+
 

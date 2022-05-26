@@ -1,13 +1,13 @@
 import { createContext, useContext, useState } from "react";
 
-type StateTypes = {
+export type ValueTypes = {
     bg: string;
     text: string;
 }
 
 type SectionTypes = {
-    values: StateTypes;
-    setValues: (value: StateTypes) => void;
+    values: ValueTypes;
+    setValues: (value: ValueTypes) => void;
 }
 
 const initialValue = {
@@ -21,7 +21,7 @@ const initialValue = {
 export const SectionsContext = createContext<SectionTypes>(initialValue);
 
 export const SectionsStylesProvider = ({ children }: any) => {
-    const [values, setValues] = useState<StateTypes>(initialValue.values);
+    const [values, setValues] = useState<ValueTypes>(initialValue.values);
 
     return (
         <SectionsContext.Provider value={{ values, setValues }}>
