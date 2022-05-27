@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { sectionsReducer } from "./sectionsReducer";
+import { themeReducer } from "./themeReducer";
 
 export const rootReducer = combineReducers({
-    sections: sectionsReducer,
+    theme: themeReducer,
 });
